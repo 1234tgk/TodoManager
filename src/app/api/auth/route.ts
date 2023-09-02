@@ -12,6 +12,7 @@ interface NewUserRespose {
   id: string;
   name: string;
   email: string;
+  role: string;
 }
 
 type NewResponse = NextResponse<{ user?: NewUserRespose; error?: string }>;

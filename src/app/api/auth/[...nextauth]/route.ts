@@ -28,6 +28,7 @@ const authOptions: NextAuthOptions = {
           name: user.name,
           email: user.email,
           id: user._id,
+          role: user.role,
         };
       },
     }),
@@ -35,14 +36,16 @@ const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     jwt({ token, user }) {
-      if (user?.id) {
+      if (user) {
         token.id = user.id;
+        token.role = user.role;
       }
 
       return token;
     },
     session({ session, token }) {
-      if (session.user) {
+      if (session?.user) {
+        (session.user as { role: string }).role = token.role as string;
         (session.user as { id: string }).id = token.id as string;
       }
       return session;
