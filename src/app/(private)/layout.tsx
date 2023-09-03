@@ -16,7 +16,11 @@ export default async function PrivateLayout({ children }: Props) {
   return (
     <>
       <NavBar />
-      {children}
+      <div className='min-h-screen flex flex-col items-center justify-center bg-gray-100'>
+        <div className='bg-white p-8 rounded shadow-md w-96 text-center'>
+          {children}
+        </div>
+      </div>
     </>
   );
 }

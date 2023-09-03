@@ -12,5 +12,11 @@ export default async function GuestLayout({ children }: Props) {
 
   if (session) redirect("/");
 
-  return <>{children}</>;
+  return (
+    <>
+      <div className='min-h-screen flex items-center justify-center bg-gray-100'>
+        <div className='bg-white p-8 rounded shadow-md w-96'>{children}</div>
+      </div>
+    </>
+  );
 }
