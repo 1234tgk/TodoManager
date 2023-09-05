@@ -27,7 +27,7 @@ const Login = () => {
     const res = await signIn("credentials", { ...formState, redirect: false });
 
     if (res?.error) return alert(res.error);
-    router.replace("/");
+    router.replace("/todo");
   };
 
   return (
