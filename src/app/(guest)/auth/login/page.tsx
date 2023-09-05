@@ -4,6 +4,7 @@ import React, { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import InputField from "@/components/InputField";
+import Spinner from "@/components/Spinner";
 
 const DEFAULTS = {
   email: "",
@@ -12,6 +13,7 @@ const DEFAULTS = {
 
 const Login = () => {
   const [formState, setFormState] = useState(DEFAULTS);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
@@ -23,8 +25,11 @@ const Login = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const res = await signIn("credentials", { ...formState, redirect: false });
+
+    setIsLoading(false);
 
     if (res?.error) return alert(res.error);
     router.replace("/todo");
@@ -32,6 +37,7 @@ const Login = () => {
 
   return (
     <>
+      {isLoading && <Spinner />}
       <h2 className='text-2xl mb-4'>Login</h2>
       <form onSubmit={handleSubmit}>
         <InputField
