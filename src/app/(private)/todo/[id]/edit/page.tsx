@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { Todo } from "@/types";
 import TodoForm from "@/components/forms/Todo";
 import Spinner from "@/components/Spinner";
 

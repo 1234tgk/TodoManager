@@ -1,6 +1,6 @@
-import { Todo } from "@/types";
+import { NewTodoResponse } from "./types";
 
-export const getTodos = async (): Promise<Todo[]> => {
+export const getTodos = async (): Promise<NewTodoResponse[]> => {
   const response = await fetch("/api/todo");
 
   if (!response.ok) {
@@ -16,7 +16,7 @@ export const getTodos = async (): Promise<Todo[]> => {
   return data.todos;
 };
 
-export const getTodo = async (id: string): Promise<Todo> => {
+export const getTodo = async (id: string): Promise<NewTodoResponse> => {
   const response = await fetch(`/api/todo/${id}`);
 
   if (!response.ok) {
@@ -35,7 +35,7 @@ export const getTodo = async (id: string): Promise<Todo> => {
 export const createTodo = async (body: {
   title?: string;
   content: string;
-}): Promise<Todo> => {
+}): Promise<NewTodoResponse> => {
   const response = await fetch(`/api/todo`, {
     method: "POST",
     body: JSON.stringify(body),
@@ -60,7 +60,7 @@ export const updateTodo = async (
     title?: string;
     content: string;
   }
-): Promise<Todo> => {
+): Promise<NewTodoResponse> => {
   const response = await fetch(`/api/todo/${id}`, {
     method: "PUT",
     body: JSON.stringify(body),

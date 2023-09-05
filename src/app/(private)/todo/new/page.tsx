@@ -1,11 +1,10 @@
 "use client";
 
 import { createTodo } from "@/modules/todo/api";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
-import { Todo } from "@/types";
 import TodoForm from "@/components/forms/Todo";
 
 const DEFAULTS = {

@@ -5,12 +5,12 @@ import TodoComponent from "@/components/Todo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useRouter } from "next/navigation";
-import { Todo } from "@/types";
+import { NewTodoResponse } from "@/modules/todo/types";
 import { getTodos } from "@/modules/todo/api";
 import Spinner from "@/components/Spinner";
 
 export default function Todos() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<NewTodoResponse[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 

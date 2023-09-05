@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { getTodo } from "@/modules/todo/api";
 import TodoForm from "@/components/forms/Todo";
-import { Todo } from "@/types";
+import { NewTodoResponse } from "@/modules/todo/types";
 import Spinner from "@/components/Spinner";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Todo({ params: { id } }: Props) {
-  const [todo, setTodo] = useState<Todo>();
+  const [todo, setTodo] = useState<NewTodoResponse>();
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 

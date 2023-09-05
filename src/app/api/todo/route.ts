@@ -2,26 +2,13 @@ import startDb from "@/lib/mongodb";
 import TodoModel from "@/modules/todo/model";
 import { NextResponse } from "next/server";
 import authorize from "@/lib/authorize";
+import {
+  NewTodoRequest,
+  NewGetTodosResponse,
+  NewCreateTodoResponse,
+} from "@/modules/todo/types";
 
-interface NewTodoRequest {
-  title?: string;
-  content: string;
-}
-
-interface NewTodoRespose {
-  id: string;
-  userId: string;
-  title?: string;
-  content: string;
-}
-
-type NewGetResponse = NextResponse<{
-  todos?: NewTodoRespose[];
-  error?: string;
-}>;
-type NewPostResponse = NextResponse<{ todo?: NewTodoRespose; error?: string }>;
-
-export const GET = async (): Promise<NewGetResponse> => {
+export const GET = async (): Promise<NewGetTodosResponse> => {
   await startDb();
 
   const { error, status, userId } = await authorize();
@@ -44,7 +31,7 @@ export const GET = async (): Promise<NewGetResponse> => {
   });
 };
 
-export const POST = async (req: Request): Promise<NewPostResponse> => {
+export const POST = async (req: Request): Promise<NewCreateTodoResponse> => {
   const body = (await req.json()) as NewTodoRequest;
 
   await startDb();

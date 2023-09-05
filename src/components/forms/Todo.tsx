@@ -1,4 +1,4 @@
-import { Todo } from "@/types";
+import { NewTodoResponse } from "@/modules/todo/types";
 import React from "react";
 import InputField from "../InputField";
 import TextAreaField from "../TextAreaField";
@@ -7,7 +7,7 @@ interface Props {
   disabled?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   onSubmit?: React.FormEventHandler<HTMLFormElement>;
-  todo?: Pick<Todo, "title" | "content">;
+  todo?: Pick<NewTodoResponse, "title" | "content">;
 }
 
 export default function TodoForm({

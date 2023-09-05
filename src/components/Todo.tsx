@@ -1,9 +1,9 @@
 import React from "react";
-import { Todo } from "@/types";
+import { NewTodoResponse } from "@/modules/todo/types";
 import Link from "next/link";
 
 interface Props {
-  todo: Todo;
+  todo: NewTodoResponse;
 }
 
 const Todo = ({ todo }: Props) => {
