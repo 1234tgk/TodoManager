@@ -3,6 +3,7 @@
 import React, { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { useRouter } from "next/navigation";
 import InputField from "@/components/InputField";
+import Spinner from "@/components/Spinner";
 
 const DEFAULTS = {
   name: "",
@@ -12,6 +13,7 @@ const DEFAULTS = {
 
 const SignUp = () => {
   const [formState, setFormState] = useState(DEFAULTS);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = ({ target }) => {
@@ -23,11 +25,14 @@ const SignUp = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     const res = await fetch("/api/auth", {
       method: "POST",
       body: JSON.stringify(formState),
     }).then((res) => res.json());
+
+    setIsLoading(false);
 
     if (res?.error) {
       return alert(res.error);
@@ -39,6 +44,7 @@ const SignUp = () => {
 
   return (
     <>
+      {isLoading && <Spinner />}
       <h2 className='text-2xl mb-4'>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <InputField
