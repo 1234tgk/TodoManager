@@ -29,7 +29,7 @@ export default function Todo({ params: { id } }: Props) {
       setFormState(todo);
       setIsLoading(false);
     });
-  }, []);
+  }, [id]);
 
   const handleChange: React.ChangeEventHandler<
     HTMLInputElement | HTMLTextAreaElement

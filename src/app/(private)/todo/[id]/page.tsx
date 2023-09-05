@@ -26,7 +26,7 @@ export default function Todo({ params: { id } }: Props) {
       setTodo(todo);
       setIsLoading(false);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>
