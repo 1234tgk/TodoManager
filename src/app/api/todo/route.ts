@@ -3,7 +3,7 @@ import TodoModel from "@/modules/todo/model";
 import { NextResponse } from "next/server";
 import authorize from "@/lib/authorize";
 import {
-  NewTodoRequest,
+  NewCreateTodoRequest,
   NewGetTodosResponse,
   NewCreateTodoResponse,
 } from "@/modules/todo/types";
@@ -32,7 +32,7 @@ export const GET = async (): Promise<NewGetTodosResponse> => {
 };
 
 export const POST = async (req: Request): Promise<NewCreateTodoResponse> => {
-  const body = (await req.json()) as NewTodoRequest;
+  const body = (await req.json()) as NewCreateTodoRequest;
 
   await startDb();
   const { error, status, userId } = await authorize();
