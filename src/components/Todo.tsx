@@ -10,7 +10,7 @@ const Todo = ({ todo }: Props) => {
   return (
     <Link
       href={`/todo/${todo.id}`}
-      className='bg-white rounded-lg shadow-md p-4 mb-4 h-40 hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105'
+      className='bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-4 h-40 hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105'
     >
       <h2 className='text-xl font-semibold overflow-hidden overflow-ellipsis whitespace-nowrap max-w-xs'>
         {todo?.title || ""}
