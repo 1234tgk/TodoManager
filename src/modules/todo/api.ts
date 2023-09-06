@@ -1,4 +1,4 @@
-import { NewTodoResponse } from "./types";
+import { NewTodoResponse, NewUpdateTodoRequest } from "./types";
 
 export const getTodos = async (): Promise<NewTodoResponse[]> => {
   const response = await fetch("/api/todo");
@@ -56,10 +56,7 @@ export const createTodo = async (body: {
 
 export const updateTodo = async (
   id: string,
-  body: {
-    title?: string;
-    content: string;
-  }
+  body: NewUpdateTodoRequest
 ): Promise<NewTodoResponse> => {
   const response = await fetch(`/api/todo/${id}`, {
     method: "PUT",
