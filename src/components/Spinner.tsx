@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Spinner() {
   return (
-    <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center bg-white bg-opacity-75'>
+    <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center bg-white dark:bg-gray-950 bg-opacity-75'>
       <FontAwesomeIcon
         icon={faSpinner}
         spin

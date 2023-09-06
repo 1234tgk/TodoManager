@@ -12,7 +12,7 @@ const Profile = () => {
     <>
       <h2 className='text-2xl mb-4'>Profile</h2>
       <div className='mb-4'>
-        <p className='text-gray-600 text-lg font-semibold'>
+        <p className='text-gray-600 dark:text-gray-200 text-lg font-semibold'>
           {user?.name} {user?.role === "admin" && "(ADMIN)"}
         </p>
         <p className='text-gray-500'>{user?.email}</p>

@@ -17,7 +17,10 @@ export default function TodoForm({
   todo,
 }: Props) {
   return (
-    <form onSubmit={onSubmit} className='bg-white p-4 rounded shadow-md'>
+    <form
+      onSubmit={onSubmit}
+      className='bg-white dark:bg-gray-800 p-4 rounded shadow-md'
+    >
       <div className='mb-4'>
         <InputField
           label='title'

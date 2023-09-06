@@ -14,8 +14,10 @@ export default async function GuestLayout({ children }: Props) {
 
   return (
     <>
-      <div className='min-h-screen flex items-center justify-center bg-gray-100'>
-        <div className='bg-white p-8 rounded shadow-md w-96'>{children}</div>
+      <div className='min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-950'>
+        <div className='bg-white dark:bg-gray-800 p-8 rounded shadow-md w-96'>
+          {children}
+        </div>
       </div>
     </>
   );
