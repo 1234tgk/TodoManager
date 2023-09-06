@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 
+export interface NewGetTodosRequest {
+  isDone?: boolean;
+}
+
 export interface NewCreateTodoRequest {
   title?: string;
   content: string;

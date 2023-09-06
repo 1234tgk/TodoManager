@@ -1,7 +1,7 @@
 import { NewTodoResponse, NewUpdateTodoRequest } from "./types";
 
 export const getTodos = async (): Promise<NewTodoResponse[]> => {
-  const response = await fetch("/api/todo");
+  const response = await fetch("/api/todo?isDone=false");
 
   if (!response.ok) {
     throw new Error("failed to fetch");
