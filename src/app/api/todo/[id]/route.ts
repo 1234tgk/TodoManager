@@ -3,7 +3,7 @@ import TodoModel from "@/modules/todo/model";
 import { NextResponse } from "next/server";
 import authorize from "@/lib/authorize";
 import {
-  NewTodoRequest,
+  NewUpdateTodoRequest,
   NewGetTodoResponse,
   NewUpdateTodoResponse,
 } from "@/modules/todo/types";
@@ -47,7 +47,7 @@ export const PUT = async (
   req: Request,
   { params }: { params: { id: string } }
 ): Promise<NewUpdateTodoResponse> => {
-  const body = (await req.json()) as NewTodoRequest;
+  const body = (await req.json()) as NewUpdateTodoRequest;
   await startDb();
 
   const { error, status, userId } = await authorize();

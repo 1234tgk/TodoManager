@@ -4,6 +4,7 @@ interface TodoDocument extends Document {
   userId: Types.ObjectId;
   title?: string;
   content: string;
+  isDone: boolean;
 }
 
 const todoSchema = new Schema<TodoDocument, {}, {}>(
@@ -11,6 +12,7 @@ const todoSchema = new Schema<TodoDocument, {}, {}>(
     userId: { type: Schema.Types.ObjectId, ref: "User" },
     title: { type: String },
     content: { type: String, required: true },
+    isDone: { type: Boolean, default: false },
   },
   {
     timestamps: true,

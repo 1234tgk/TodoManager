@@ -1,14 +1,15 @@
 import startDb from "@/lib/mongodb";
 import TodoModel from "@/modules/todo/model";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import authorize from "@/lib/authorize";
 import {
-  NewTodoRequest,
+  NewCreateTodoRequest,
   NewGetTodosResponse,
   NewCreateTodoResponse,
 } from "@/modules/todo/types";
 
-export const GET = async (): Promise<NewGetTodosResponse> => {
+export const GET = async (req: NextRequest): Promise<NewGetTodosResponse> => {
+  const query = Object.fromEntries(req.nextUrl.searchParams);
   await startDb();
 
   const { error, status, userId } = await authorize();
@@ -17,7 +18,9 @@ export const GET = async (): Promise<NewGetTodosResponse> => {
     return NextResponse.json({ error }, { status });
   }
 
-  const todos = await TodoModel.find({ userId }).sort({ updatedAt: -1 });
+  const todos = await TodoModel.find({ ...query, userId }).sort({
+    updatedAt: -1,
+  });
 
   return NextResponse.json({
     todos: todos.map((todo) => {
@@ -32,7 +35,7 @@ export const GET = async (): Promise<NewGetTodosResponse> => {
 };
 
 export const POST = async (req: Request): Promise<NewCreateTodoResponse> => {
-  const body = (await req.json()) as NewTodoRequest;
+  const body = (await req.json()) as NewCreateTodoRequest;
 
   await startDb();
   const { error, status, userId } = await authorize();

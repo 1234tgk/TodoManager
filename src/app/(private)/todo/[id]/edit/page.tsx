@@ -4,7 +4,10 @@ import { getTodo, updateTodo } from "@/modules/todo/api";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowCircleLeft,
+  faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import TodoForm from "@/components/forms/Todo";
 import Spinner from "@/components/Spinner";
 
@@ -56,6 +59,15 @@ export default function Todo({ params: { id } }: Props) {
     }
   };
 
+  const handleDone = async () => {
+    try {
+      await updateTodo(id, { isDone: true });
+      router.push("/todo");
+    } catch (e) {
+      alert(e);
+    }
+  };
+
   return (
     <>
       {isLoading && <Spinner />}
@@ -68,6 +80,13 @@ export default function Todo({ params: { id } }: Props) {
           >
             <FontAwesomeIcon icon={faArrowCircleLeft} className='mr-2' />
             Back
+          </button>
+          <button
+            onClick={handleDone}
+            className='bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600'
+          >
+            <FontAwesomeIcon icon={faCheckCircle} className='mr-2' />
+            Done
           </button>
         </div>
       </div>

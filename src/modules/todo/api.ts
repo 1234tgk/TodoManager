@@ -1,7 +1,7 @@
-import { NewTodoResponse } from "./types";
+import { NewTodoResponse, NewUpdateTodoRequest } from "./types";
 
 export const getTodos = async (): Promise<NewTodoResponse[]> => {
-  const response = await fetch("/api/todo");
+  const response = await fetch("/api/todo?isDone=false");
 
   if (!response.ok) {
     throw new Error("failed to fetch");
@@ -56,10 +56,7 @@ export const createTodo = async (body: {
 
 export const updateTodo = async (
   id: string,
-  body: {
-    title?: string;
-    content: string;
-  }
+  body: NewUpdateTodoRequest
 ): Promise<NewTodoResponse> => {
   const response = await fetch(`/api/todo/${id}`, {
     method: "PUT",
