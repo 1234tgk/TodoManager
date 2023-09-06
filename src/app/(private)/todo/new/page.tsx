@@ -39,7 +39,7 @@ export default function Todo() {
   return (
     <>
       <div className='flex items-center justify-between mb-4'>
-        <h1 className='text-2xl font-semibold mb-4'>Edit To-Do</h1>
+        <h1 className='text-2xl font-semibold mb-4'>Create To-do</h1>
         <div className='space-x-2'>
           <button
             onClick={() => router.back()}
